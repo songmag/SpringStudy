@@ -1,27 +1,24 @@
 package com.spring.Controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import com.spring.model.UserDAO;
+import com.spring.model.UserVo;
+import com.spring.model.VoObject;
+
+
+@RestController
 @RequestMapping(value = "/login")
 public class LoginController {
-	@RequestMapping(value="/login")
-	public person login_main()
+	@Autowired private UserDAO dao;
+	@RequestMapping(value="/")
+	public List<VoObject> getUser()
 	{
-		System.out.println("loginMain");
-		person a = new person();
-		return a;
-	}
-	@RequestMapping(value="/sign")
-	public String sign()
-	{
-		System.out.println("sign");
-		return "sign";
-	}
-	@RequestMapping(value="/sign/{id}")
-	public String login()
-	{
-		return "login";
+		return dao.getAll();
 	}
 }
