@@ -2,38 +2,30 @@ package com.spring.model;
 
 import java.util.List;
 
-import org.apache.catalina.core.ApplicationContext;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public class UserDAO implements DAOMethod{	
+public class UserDAO{	
 	@Autowired private SqlSession sql;
-	@Override
-	public List<VoObject> getAll() {
-		return sql.selectList("db_mapper.all_identity");
-	}	
+	
+	public List<UserVo> getAll() {
+		return sql.selectList("user-mapper.getAllUser");
+	}
 	public void addUser(UserVo vo) {
-		sql.insert("db_mapper.add_user",vo);
+		sql.insert("user-mapper.addUser",vo);
 	}
 	public void deleteUser(UserVo vo) {
-		sql.delete("db_mapper.delete_user",vo);
+		sql.delete("user-mapper.deleteUserById",vo);
 	}
 	public void UpdateUser(UserVo vo)
 	{
-		sql.update("db_mapper.update_user",vo);
+		sql.update("user-mapper.updateUserById",vo);
 	}
-	@Override
-	public VoObject getOnce() {
-		// TODO Auto-generated method stub
-		return null;
+	public UserVo getOnce(UserVo vo) {
+		return sql.selectOne("user-mapper.getUserById", vo);
 	}
-	
 }

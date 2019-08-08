@@ -25,15 +25,21 @@ public class LoginController {
 	DefaultListableBeanFactory df;
 	
 	@RequestMapping(value="/")
-	public LinkedList<Object> getUser() throws BeansException, JSONException
+	public List<UserVo> getUser()
 	{
-		LinkedList<Object> object = new LinkedList<Object>();
-		for(String name : df.getBeanDefinitionNames())
-		{
-			object.add(name);
-			System.out.println(name + "\t" + df.getBean(name).getClass().getName());
-		}
-		return object;
+		return dao.getAll();
 		//return dao.getAll();
+	}
+	@RequestMapping(value="/test")
+	public void addUser()
+	{
+		UserVo user = new UserVo();
+		user.setName("test3");
+		user.setId("test3");
+		user.setPw("1234");
+		dao.addUser(user);
+		List<UserVo> users = dao.getAll();
+		dao.deleteUser(user);
+		System.out.println(users);
 	}
 }

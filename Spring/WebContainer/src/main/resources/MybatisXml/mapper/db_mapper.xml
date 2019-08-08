@@ -2,12 +2,28 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="identity-Mapper">
-<select id="all_identity" resultType="com.spring.model.UserVo">
-	select * from user;
+<mapper namespace="user-mapper">
+<select id="getAllUser" resultType="com.spring.model.UserVo">
+	select * from user_information;
+</select> 
+<select id="getUserById" resultType="com.spring.model.UserVo" parameterType="com.spring.model.UserVo">
+	select * from user_information where id = #{id};
 </select>
-<insert id="add_user" >
-	insert identity_information(id,pw,name,phone_number,address,Simple_self_instruction)
-	values(#{id},#{pw},#{name},#{phone_number},#{address},#{Simple_self_instruction}); 
+<insert id="addUser" parameterType="com.spring.model.UserVo" >
+	insert into user_information(id,pw,name,phone_number,address,self_instruction)
+	values(#{id},#{pw},#{name},#{phone_number},#{address},#{self_instruction}); 
 </insert>
+<delete id="deleteUserById"  parameterType="com.spring.model.UserVo">
+	delete from user_information
+	where id = #{id}
+</delete>
+<update id="updateUserById"  parameterType="com.spring.model.UserVo">
+	update user_information 
+	set pw = #{pw}
+	, name =#{name}
+	, phone_number = #{phone_number}
+	, address = #{address}
+	, self_instruction = #{self_instruction}
+	where id_num = #{id_num}  
+</update>
 </mapper>

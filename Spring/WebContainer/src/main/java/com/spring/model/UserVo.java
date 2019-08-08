@@ -9,18 +9,20 @@ public class UserVo implements VoObject {
 	private String phone_number;
 	private String address;
 	private Date date;
-	private String simple_self_instruction;
+	private String self_instruction;
 	public UserVo() {}
-	public UserVo(String name, String id, String pw, String phone_number, String address, Date date,
-			String simple_self_instruction) {
+	
+	public UserVo(int id_num, String name, String id, String pw, String phone_number, String address, Date date,
+			String self_instruction) {
 		super();
+		this.id_num = id_num;
 		this.name = name;
 		this.id = id;
 		this.pw = pw;
 		this.phone_number = phone_number;
 		this.address = address;
 		this.date = date;
-		this.simple_self_instruction = simple_self_instruction;
+		this.self_instruction = self_instruction;
 	}
 	public String getName() {
 		return name;
@@ -59,12 +61,16 @@ public class UserVo implements VoObject {
 		this.date = date;
 	}
 	public String getSimple_self_instruction() {
-		return simple_self_instruction;
+		return self_instruction;
 	}
 	public void setSimple_self_instruction(String simple_self_instruction) {
-		this.simple_self_instruction = simple_self_instruction;
+		this.self_instruction = simple_self_instruction;
 	}
 	public int getId_num() {
 		return id_num;
+	}
+	public void setId_num(int id_num)
+	{
+		this.id_num = id_num;
 	}
 }
