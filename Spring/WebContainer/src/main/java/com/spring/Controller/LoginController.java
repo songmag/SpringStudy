@@ -34,12 +34,15 @@ public class LoginController {
 	public void addUser()
 	{
 		UserVo user = new UserVo();
-		user.setName("test3");
-		user.setId("test3");
-		user.setPw("1234");
+		user.setName("테스트3");
+		user.setId("테스트3");
+		user.setPw("테스트");
 		dao.addUser(user);
 		List<UserVo> users = dao.getAll();
 		dao.deleteUser(user);
-		System.out.println(users);
+		for(UserVo item : users)
+		{
+			System.out.println(item.getId());
+		}
 	}
 }

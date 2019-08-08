@@ -10,8 +10,27 @@
 	select * from user_information where id = #{id};
 </select>
 <insert id="addUser" parameterType="com.spring.model.UserVo" >
-	insert into user_information(id,pw,name,phone_number,address,self_instruction)
-	values(#{id},#{pw},#{name},#{phone_number},#{address},#{self_instruction}); 
+	insert into user_information(id,pw,name
+	<if test= "address != null">
+		,address,
+	</if>
+	<if test="phone_number != null">
+		,phone_number,
+	</if>
+	<if test="self_instruction != null">
+		,self_instruction
+	</if>)
+	values(#{id},#{pw},#{name}
+	<if test= "address != null">
+		,#{address},
+	</if>
+	<if test="phone_number != null">
+		,{phone_number},
+	</if>
+	<if test="self_instruction != null">
+		,#{self_instruction}
+	</if>
+	)
 </insert>
 <delete id="deleteUserById"  parameterType="com.spring.model.UserVo">
 	delete from user_information
@@ -19,7 +38,7 @@
 </delete>
 <update id="updateUserById"  parameterType="com.spring.model.UserVo">
 	update user_information 
-	set pw = #{pw}
+	set pw=#{pw}
 	, name =#{name}
 	, phone_number = #{phone_number}
 	, address = #{address}
