@@ -6,19 +6,21 @@ drop table user_information;
 
 create table user_information
 (
-	id_num int not null primary key auto_increment,
+	id_num int not null auto_increment,
 	id varchar(30) not null,
 	pw varchar(30) not null,
 	name varchar(60) not null,
 	phone_number varchar(100) default "000-000-0000",
 	address varchar(255)  default "address",
 	sign_Date date default now(),
-	self_instruction text default "instruction"
+	self_instruction text default "instruction",
+	primary key (id_num,id)
 );
 create table menu
 (
-	menu_num int not null primary key auto_increment,
-	menu_name varchar(60) not null
+	menu_num int not null auto_increment,
+	menu_name varchar(60) not null,
+	primary key (menu_num,menu_name)
 );
 create table post
 (
