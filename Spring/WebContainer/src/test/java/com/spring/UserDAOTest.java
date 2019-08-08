@@ -18,29 +18,39 @@ import com.spring.model.UserVo;
 @ContextConfiguration(classes = WebContainerApplication.class)
 public class UserDAOTest {
 	@Autowired UserDAO userdao;
-	UserVo vo;
-	@Before
-	public void before()
-	{
-		vo = new UserVo();
-		vo.setId("123");
-		
-	}
-	
-	@Test
-	public void testDelete()
-	{
-		vo.setId("123");
-		userdao.getOnce(vo);
-		assertThat(vo.getName(),is("123"));
-		userdao.deleteUser(vo);
-	}
 	@Test
 	public void testAddUser()
 	{
-		vo.setPw("123");
-		vo.setName("123");
-		userdao.addUser(vo);
-		userdao.getOnce(vo);
+		
 	}
+	@Test
+	public void testDelete()
+	{
+	}
+	
+	//Test Scenario
+	/*
+	 * Scope Class Member : user1,user2
+		1. Add User
+			#User1
+			Id = test1
+			pw = 1234
+			name = test1
+			#User2
+			Id = test2
+			pw = 1234
+			name = test2
+		2. Search User
+			#GetAllUser <List>
+			#GetUser1 <Once>
+			#GetUser2 <Once>
+		3. Update User
+			#User1 Name -> testUpdate1
+			#User2 Name -> testUpdate2
+		4. Delete User
+			#User1 delete
+			#User2 delete
+			#GetAllUser <List>
+			#Size check 
+	*/
 }
