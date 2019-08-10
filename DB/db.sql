@@ -48,3 +48,6 @@ create table comment
 	foreign key(post_num)
 	references post(post_num) on delete cascade on update cascade
 );
+-- 보안을 위해 뷰를 만들어놓음
+CREATE VIEW USER_VIEW AS
+SELECT ID,NAME,PHONE_NUMBER,ADDRESS,SELF_INSTRUCTION FROM USER_INFORMATION;
