@@ -3,48 +3,48 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="post-mapper">
-	<select id="getAllPost">
+	<select id="getAllPost" resultType="com.spring.model.vo.PostVo">
 		SELECT * FROM POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST
 	</select>
-	<select id="getPostByIdNum">
+	<select id="getPostByIdNum" resultType="com.spring.model.vo.PostVo" parameterType="com.spring.model.vo.PostVo">
 		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST;
-		WHERE ID_NUM = #{user_id_num}
+		WHERE ID_NUM = #{id_num}
 	</select>
-	<select id="getPostByMenuNum">
+	<select id="getPostByMenuNum" resultType="com.spring.model.vo.PostVo" parameterType="com.spring.model.vo.PostVo">
 		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST;
 		WHERE MENU_NUM= #{menu_num}
 	</select>
-	<select id="getPostByIdName">
+	<select id="getPostByIdName" resultType="com.spring.model.vo.PostVo" parameterType="com.spring.model.vo.UserVo">
 		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST
 		INNER JOIN USER_VIEW
 		ON POST.ID_NUM = USER_VIEW.ID_NUM
-		WHERE USER_VIEW.ID = #{user_id}
+		WHERE USER_VIEW.ID = #{id}
 	</select>
-	<select id="getPostByUserName">
+	<select id="getPostByUserName" resultType="com.spring.model.vo.PostVo" parameterType="com.spring.model.vo.UserVo">
 		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST
 		INNER JOIN USER_VIEW
 		ON POST.ID_NUM = USER_VIEW.ID_NUM
-		WHERE USER_VIEW.USER_NAME = #{user_name}
+		WHERE USER_VIEW.USER_NAME = #{name}
 	</select>
-	<select id="getPostByMenuName">
+	<select id="getPostByMenuName" resultType="com.spring.model.vo.PostVo" parameterType="com.spring.model.vo.MenuVo">
 		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST
 		INNER JOIN MENU
 		ON POST.MENU_NUM = MENU.MENU_NUM
 		WHERE MENU_NAME = #{menu_name}
 	</select>
-	<select id="getPostByDate">
+	<select id="getPostByDate" resultType="com.spring.model.vo.PostVo"  parameterType="com.spring.model.vo.PostVo">
 		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST;
 		WHERE POST_DATE > #{post_date}
 	</select>
-	<select id="getPostNumContents">
+	<select id="getPostNumContents" resultType="com.spring.model.vo.PostVo"  parameterType="com.spring.model.vo.PostVo">
 		SELECT POST_NUM,POST_NAME,POST_DATE,POST_CONTENTS FROM POST
 		WHERE POST_NUM= #{post_num}
 	</select>
-	<select id="getPostNameContents">
+	<select id="getPostNameContents" resultType="com.spring.model.vo.PostVo"  parameterType="com.spring.model.vo.PostVo">
 		SELECT POST_NUM,POST_NAME,POST_DATE,POST_CONTENTS FROM POST
 		WHERE POST_NAME = #{post_name}
 	</select>
-	<insert id="insertPost">
+	<insert id="insertPost" parameterType="com.spring.model.vo.PostVo">
 		INSERT INTO POST(ID_NUM,MENU_NUM,POST_NAME,POST_CONTENTS
 		<if test="thumbnail != null">
 			,THUMBNAIL
@@ -56,7 +56,7 @@
 		</if>
 			)
 	</insert>
-	<update id="updatePost">
+	<update id="updatePost" parameterType="com.spring.model.vo.PostVo">
 	UPDATE POST
 	SET
 		<if test ="post_name != null">
@@ -66,7 +66,7 @@
 		,POST_CONTENTS = #{post_contents}
 		</if>
 	</update>
-	<delete id="deletePost">
+	<delete id="deletePost" parameterType="com.spring.model.vo.PostVo">
 		DELETE POST
 		WHERE POST_NUM = #{post_num}
 	</delete>

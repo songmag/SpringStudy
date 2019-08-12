@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.spring.model.UserDAO;
-import com.spring.model.UserVo;
+import com.spring.model.dao.UserDAO;
+import com.spring.model.vo.UserVo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebContainerApplication.class)

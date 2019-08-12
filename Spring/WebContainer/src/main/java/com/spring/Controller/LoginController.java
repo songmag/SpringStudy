@@ -12,9 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.model.UserDAO;
-import com.spring.model.UserVo;
-import com.spring.model.VoObject;
+import com.spring.model.dao.UserDAO;
+import com.spring.model.vo.UserVo;
 
 
 @RestController

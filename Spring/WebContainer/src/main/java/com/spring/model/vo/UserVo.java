@@ -1,7 +1,7 @@
-package com.spring.model;
+package com.spring.model.vo;
 
 import java.sql.Date;
-public class UserVo implements VoObject {
+public class UserVo {
 	private int id_num;
 	private String name;
 	private String id;
@@ -11,7 +11,6 @@ public class UserVo implements VoObject {
 	private Date date;
 	private String self_instruction;
 	public UserVo() {}
-	
 	public UserVo(int id_num, String name, String id, String pw, String phone_number, String address, Date date,
 			String self_instruction) {
 		super();
