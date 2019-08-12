@@ -23,7 +23,8 @@
 	</if>
 	<if test="self_instruction != null">
 		,self_instruction
-	</if>)
+	</if>
+	)
 	values(#{id},#{pw},#{name}
 	<if test= "address != null">
 		,#{address},
