@@ -4,11 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user-mapper">
 <select id="getAllUser" resultType="com.spring.model.UserVo">
-	select * from user_information;
+	select * from user_view;
 </select> 
 <select id="getUserById" resultType="com.spring.model.UserVo" parameterType="com.spring.model.UserVo">
-	select * from user_information where id = #{id};
+	select * from user_view where id = #{id};
 </select>
+<select id="loginCheck" resultType="boolean" parameterType="com.spring.model.UserVo">
+	SELECT IF(ID = #{id} AND PW=#{pw}) from user_information where id=#{id};
+</select>
+
 <insert id="addUser" parameterType="com.spring.model.UserVo" >
 	insert into user_information(id,pw,name
 	<if test= "address != null">
@@ -38,11 +42,21 @@
 </delete>
 <update id="updateUserById"  parameterType="com.spring.model.UserVo">
 	update user_information 
-	set pw=#{pw}
+	<if test="pw != null">
+		set pw=#{pw}
+	</if>
+	<if test="name != null">
 	, name =#{name}
-	, phone_number = #{phone_number}
-	, address = #{address}
-	, self_instruction = #{self_instruction}
+        </if>
+	<if test="phone_number != null">
+		, phone_number = #{phone_number}
+	</if>
+	<if test="address != null">
+		, address = #{address}
+	</if>
+	<if test="self_instruction != null">
+		, self_instruction = #{self_instruction}
+	</if>
 	where id_num = #{id_num}  
 </update>
 </mapper>
