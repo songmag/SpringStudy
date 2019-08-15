@@ -6,10 +6,10 @@ public class PostVo {
 	private int post_num = 0;
 	private int id_num = 0;
 	private int menu_num = 0 ;
-	private Date post_date;
-	private String post_name;
-	private String thumbnail;
-	private String post_contents;
+	private Date post_date=null;
+	private String post_name=null;
+	private String thumbnail=null;
+	private String post_contents=null;
 	public int getPost_num() {
 		return post_num;
 	}

@@ -3,11 +3,11 @@ package com.spring.model.vo;
 import java.sql.Date;
 
 public class CommentVo {
-	private int comment_num;
-	private int post_num;
-	private int id_num;
-	private Date comment_date;
-	private String context;
+	private int comment_num=0;
+	private int post_num=0;
+	private int id_num=0;
+	private Date comment_date=null;
+	private String context=null;
 	
 	public int getComment_num() {
 		return comment_num;

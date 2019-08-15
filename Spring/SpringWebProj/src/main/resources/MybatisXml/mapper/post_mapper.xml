@@ -12,33 +12,33 @@
 		WHERE ID_NUM = #{id_num}
 		LIMIT #{page} , 20
 	</select>
-	<select id="getPostListByMenuNum" resultType="com.spring.model.vo.PostVo" parameterType="Integer;Integer">
-		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST;
+	<select id="getPostListByMenuNum" resultType="com.spring.model.vo.PostVo" parameterType="HashMap">
+		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST
 		WHERE MENU_NUM= #{menu_num}
 		LIMIT #{page} , 20
 	</select>
-	<select id="getPostListById" resultType="com.spring.model.vo.PostVo" parameterType="String">
-		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST
-		INNER JOIN USER_VIEW
-		ON POST.ID_NUM = USER_VIEW.ID_NUM
+	<select id="getPostListById" resultType="com.spring.model.vo.PostVo" parameterType="HashMap">
+		SELECT P.POST_NUM,P.POST_NAME,P.POST_DATE,P.THUMBNAIL FROM POST AS P 
+		INNER JOIN USER_VIEW  
+		ON P.ID_NUM = USER_VIEW.ID_NUM
 		WHERE USER_VIEW.ID = #{id}
 		LIMIT #{page} , 20
 	</select>
-	<select id="getPostListByUserName" resultType="com.spring.model.vo.PostVo" parameterType="String">
-		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST
+	<select id="getPostListByUserName" resultType="com.spring.model.vo.PostVo" parameterType="HashMap">
+		SELECT P.POST_NUM,P.POST_NAME,P.POST_DATE,P.THUMBNAIL FROM POST AS P
 		INNER JOIN USER_VIEW
-		ON POST.ID_NUM = USER_VIEW.ID_NUM
-		WHERE USER_VIEW.USER_NAME = #{name}
+		ON P.ID_NUM = USER_VIEW.ID_NUM
+		WHERE USER_VIEW.NAME = #{name}
 		LIMIT #{page} , 20
 	</select>
-	<select id="getPostListByMenuName" resultType="com.spring.model.vo.PostVo" parameterType="String">
-		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST
-		INNER JOIN MENU
-		ON POST.MENU_NUM = MENU.MENU_NUM
-		WHERE MENU_NAME = #{menu_name}
+	<select id="getPostListByMenuName" resultType="com.spring.model.vo.PostVo" parameterType="HashMap">
+		SELECT P.POST_NUM,P.POST_NAME,P.POST_DATE,P.THUMBNAIL FROM POST AS P
+		INNER JOIN MENU AS M
+		ON P.MENU_NUM = M.MENU_NUM
+		WHERE M.MENU_NAME = #{menu_name}
 		LIMIT #{page} , 20
 	</select>
-	<select id="getPostListByDate" resultType="com.spring.model.vo.PostVo"  parameterType="Date">
+	<select id="getPostListByDate" resultType="com.spring.model.vo.PostVo"  parameterType="HashMap">
 		SELECT POST_NUM,POST_NAME,POST_DATE,THUMBNAIL FROM POST;
 		WHERE POST_DATE > #{post_date}
 		LIMIT #{page} , 20

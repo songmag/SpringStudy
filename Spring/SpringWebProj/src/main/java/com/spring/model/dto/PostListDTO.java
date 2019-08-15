@@ -20,4 +20,24 @@ public class PostListDTO {
 	public void setMenu(MenuVo menu) {
 		this.menu = menu;
 	}
+	@Override
+	public String toString() {
+		StringBuilder rs = new StringBuilder();
+		rs.append("PostListDTO [menu=");
+		try {
+		rs.append(menu.getMenu_name());
+		}catch(NullPointerException e)
+		{
+			System.out.println("menu_null");
+			rs.append("null");
+		}
+		rs.append(", post_list=");
+		for(PostVo post : post_list)
+		{
+			rs.append(post.getPost_name());
+			rs.append("\t");
+		}
+		rs= rs.append("]");
+		return rs.toString();
+	}
 }

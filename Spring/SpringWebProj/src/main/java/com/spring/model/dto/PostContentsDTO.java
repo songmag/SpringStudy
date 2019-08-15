@@ -24,4 +24,8 @@ public class PostContentsDTO {
 	public void setComment_list(List<CommentVo> comment_list) {
 		this.comment_list = comment_list;
 	}
+	@Override
+	public String toString() {
+		return "PostContentsDTO [data=" + data + ", comment_list=" + comment_list + "]";
+	}
 }

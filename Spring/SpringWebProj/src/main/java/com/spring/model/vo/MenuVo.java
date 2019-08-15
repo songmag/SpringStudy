@@ -1,7 +1,7 @@
 package com.spring.model.vo;
 
 public class MenuVo {
-	private String menu_name;
+	private String menu_name=null;
 	private int menu_num = 0;
 	private int menu_count = 0;
 	public String getMenu_name() {

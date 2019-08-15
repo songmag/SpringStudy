@@ -23,12 +23,12 @@ public class PostDAO {
 	}
 	public List<PostVo> getPostList(SqlSession sql,int page)
 	{
-		return sql.selectList("post-mapper.getAllPost",(page*OFFSET-1));
+		return sql.selectList("post-mapper.getAllPost",(page == 0 )? page : (page*OFFSET-1));
 	}
 	public List<PostVo> getPostList(SqlSession sql,MenuVo menu,int page)
 	{
 		HashMap<String,Object> param = new HashMap<String,Object>();
-		param.put("page",page*OFFSET-1);
+		param.put("page",(page == 0 )? page : (page*OFFSET-1));
 		if(menu.getMenu_num() != 0)
 		{
 			param.put("menu_num", menu.getMenu_num());
@@ -37,23 +37,25 @@ public class PostDAO {
 		else
 		{
 			param.put("menu_name", menu.getMenu_name());
-			return sql.selectList("post-mapper.getPostListByMenuName",menu.getMenu_name());	
+			return sql.selectList("post-mapper.getPostListByMenuName",param);	
 		}
 	}
 	public List<PostVo> getPostList(SqlSession sql,UserVo user,int page)
 	{
 		HashMap<String,Object> param = new HashMap<String,Object>();
-		param.put("page",page*OFFSET-1);
+		param.put("page",(page == 0 )? page : (page*OFFSET-1));
 		if(user.getId_num() != 0) {
 			param.put("id_num", user.getId_num());
 			return sql.selectList("post-mapper.getPostListByIdNum",param);		
 		}
 		else if(user.getId() != null)
 		{
+			param.put("id", user.getId());
 			return sql.selectList("post-mapper.getPostListById",param);	
 		}
 		else
 		{
+			param.put("name", user.getName());
 			return sql.selectList("post-mapper.getPostListByUserName",param);
 		}
 	}

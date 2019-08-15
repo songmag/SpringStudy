@@ -2,14 +2,14 @@ package com.spring.model.vo;
 
 import java.sql.Date;
 public class UserVo {
-	private int id_num;
-	private String name;
-	private String id;
-	private String pw;
-	private String phone_number;
-	private String address;
-	private Date date;
-	private String self_instruction;
+	private int id_num=0;
+	private String name=null;
+	private String id=null;
+	private String pw=null;
+	private String phone_number=null;
+	private String address=null;
+	private Date date=null;
+	private String self_instruction=null;
 	public UserVo() {}
 	public UserVo(int id_num, String name, String id, String pw, String phone_number, String address, Date date,
 			String self_instruction) {
