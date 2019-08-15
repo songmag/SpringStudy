@@ -7,21 +7,21 @@ import com.spring.model.vo.CommentVo;
 import com.spring.model.vo.PostVo;
 
 public class PostContentsDTO {
-	private PostVo data;
-	private List<CommentVo> comment_list;
+	private PostDTO data;
+	private List<CommentDTO> comment_list;
 	public PostContentsDTO() {
-		comment_list = new LinkedList<CommentVo>();
+		comment_list = new LinkedList<CommentDTO>();
 	}
-	public PostVo getData() {
+	public PostDTO getData() {
 		return data;
 	}
-	public void setData(PostVo data) {
+	public void setData(PostDTO data) {
 		this.data = data;
 	}
-	public List<CommentVo> getComment_list() {
+	public List<CommentDTO> getComment_list() {
 		return comment_list;
 	}
-	public void setComment_list(List<CommentVo> comment_list) {
+	public void setComment_list(List<CommentDTO> comment_list) {
 		this.comment_list = comment_list;
 	}
 	@Override

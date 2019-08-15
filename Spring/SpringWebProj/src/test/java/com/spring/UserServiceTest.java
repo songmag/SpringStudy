@@ -26,14 +26,6 @@ public class UserServiceTest {
 	@Test
 	public void startTest()
 	{
-		UserVo user = new UserVo();
-		UserDTO dto = new UserDTO();
-		user.setId("test1");
-		user.setPw("1234");
-		user.setName("Kotest");
-		user.setSelf_instruction("test update");
-		dto = service.updateUser(user);
-		assertEquals(dto.getSelf_instruction(),user.getSelf_instruction());
 	}
 	
 	//Test Scenario

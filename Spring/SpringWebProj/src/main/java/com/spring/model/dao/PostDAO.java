@@ -15,11 +15,7 @@ public class PostDAO {
 	private final int OFFSET = 20;
 	public PostVo getPostContents(SqlSession sql,PostVo post)
 	{
-		if(post.getPost_num() != 0)
-		{
-			return sql.selectOne("post-mapper.getPostNumContents",post.getPost_num());	
-		}
-		return sql.selectOne("post-mapper.getPostNameContents",post.getPost_name());
+		return sql.selectOne("post-mapper.getPostNumContents",post.getPost_num());	
 	}
 	public List<PostVo> getPostList(SqlSession sql,int page)
 	{

@@ -7,11 +7,11 @@ import com.spring.model.vo.PostVo;
 
 public class PostListDTO {
 	private MenuVo menu;
-	private List<PostVo> post_list;	
-	public List<PostVo> getPost_list() {
+	private List<PostDTO> post_list;	
+	public List<PostDTO> getPost_list() {
 		return post_list;
 	}
-	public void setPost_list(List<PostVo> post_list) {
+	public void setPost_list(List<PostDTO> post_list) {
 		this.post_list = post_list;
 	}
 	public MenuVo getMenu() {
@@ -32,7 +32,7 @@ public class PostListDTO {
 			rs.append("null");
 		}
 		rs.append(", post_list=");
-		for(PostVo post : post_list)
+		for(PostDTO post : post_list)
 		{
 			rs.append(post.getPost_name());
 			rs.append("\t");

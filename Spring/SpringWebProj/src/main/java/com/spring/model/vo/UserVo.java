@@ -1,6 +1,8 @@
 package com.spring.model.vo;
 
 import java.sql.Date;
+
+import com.spring.model.dto.UserDTO;
 public class UserVo {
 	private int id_num=0;
 	private String name=null;
@@ -71,5 +73,14 @@ public class UserVo {
 	public void setId_num(int id_num)
 	{
 		this.id_num = id_num;
+	}
+	public void setUserDTO(UserDTO dto)
+	{
+		this.id = dto.getId();
+		this.address = dto.getAddress();
+		this.id_num = dto.getId_num();
+		this.name = dto.getName();
+		this.phone_number = dto.getPhone_number();
+		this.self_instruction = dto.getSelf_instruction();
 	}
 }
