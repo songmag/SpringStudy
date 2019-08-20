@@ -30,14 +30,6 @@ public class MenuServiceTest {
 	@Test
 	public void startTest()
 	{
-		List<MenuDTO> menu =  service.getMenu();
-		System.out.println(menu);
-		MenuDTO temp = service.getMenu("c");
-		System.out.println(temp);
-		MenuVo temp_menu = new MenuVo();
-		temp_menu.setMenu_name("testMenu");
-		service.updateMenu(temp_menu);
-		
 	}
 	
 	//Test Scenario

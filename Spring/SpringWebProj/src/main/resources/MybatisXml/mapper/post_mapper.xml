@@ -47,10 +47,6 @@
 		SELECT POST_NUM,POST_NAME,POST_DATE,POST_CONTENTS FROM POST
 		WHERE POST_NUM= #{post_num}
 	</select>
-	<select id="getPostNameContents" resultType="com.spring.model.vo.PostVo"  parameterType="com.spring.model.vo.PostVo">
-		SELECT POST_NUM,POST_NAME,POST_DATE,POST_CONTENTS FROM POST
-		WHERE POST_NAME = #{post_name}
-	</select>
 	<insert id="insertPost" parameterType="com.spring.model.vo.PostVo">
 		INSERT INTO POST(ID_NUM,MENU_NUM,POST_NAME,POST_CONTENTS
 		<if test="thumbnail != null">

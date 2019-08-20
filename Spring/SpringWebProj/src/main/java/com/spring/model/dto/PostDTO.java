@@ -1,10 +1,8 @@
-package com.spring.model.vo;
+package com.spring.model.dto;
 
 import java.sql.Date;
 
-import com.spring.model.dto.PostDTO;
-
-public class PostVo {
+public class PostDTO {
 	private int post_num = 0;
 	private int id_num = 0;
 	private int menu_num = 0 ;
@@ -53,14 +51,5 @@ public class PostVo {
 	}
 	public void setPost_contents(String post_contents) {
 		this.post_contents = post_contents;
-	}
-	public void setPostDTO(PostDTO dto)
-	{
-		this.id_num = dto.getId_num();
-		this.menu_num = dto.getMenu_num();
-		this.post_contents = dto.getPost_contents();
-		this.post_date = dto.getPost_date();
-		this.post_name = dto.getPost_name();
-		this.post_num = dto.getPost_num();
 	}
 }

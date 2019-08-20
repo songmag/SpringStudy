@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.spring.model.dto.MenuDTO;
 import com.spring.model.dto.PostContentsDTO;
+import com.spring.model.dto.PostDTO;
 import com.spring.model.dto.PostListDTO;
+import com.spring.model.dto.UserDTO;
 import com.spring.model.service.PostService;
 import com.spring.model.vo.MenuVo;
 import com.spring.model.vo.PostVo;
@@ -21,9 +24,9 @@ public class PostServiceTest {
 	@Test
 	public void serviceMenuNameListTest()
 	{
-		MenuVo vo;
+		MenuDTO vo;
 		PostListDTO dto; 
-		vo = new MenuVo();
+		vo = new MenuDTO();
 		vo.setMenu_name("C");
 		dto = service.getPostList(vo,0);
 		System.out.println(dto);
@@ -31,9 +34,9 @@ public class PostServiceTest {
 	@Test
 	public void serviceMenuNumListTest()
 	{
-		MenuVo vo;
+		MenuDTO vo;
 		PostListDTO dto; 
-		vo = new MenuVo();
+		vo = new MenuDTO();
 		vo.setMenu_num(1);
 		dto = service.getPostList(vo,0);
 		System.out.println(dto);
@@ -41,9 +44,9 @@ public class PostServiceTest {
 	@Test
 	public void serviceUserNumListTest()
 	{
-		UserVo vo;
+		UserDTO vo;
 		PostListDTO dto; 
-		vo = new UserVo();
+		vo = new UserDTO();
 		vo.setId_num(1);
 		dto = service.getPostList(vo,0);
 		System.out.println(dto);
@@ -51,9 +54,9 @@ public class PostServiceTest {
 	@Test
 	public void serviceUserIdListTest()
 	{
-		UserVo vo;
+		UserDTO vo;
 		PostListDTO dto; 
-		vo = new UserVo();
+		vo = new UserDTO();
 		vo.setId("test1");
 		dto = service.getPostList(vo,0);
 		System.out.println(dto);
@@ -61,31 +64,33 @@ public class PostServiceTest {
 	@Test
 	public void serviceUserNameListTest()
 	{
-		UserVo vo;
+		UserDTO vo;
 		PostListDTO dto; 
-		vo = new UserVo();
+		vo = new UserDTO();
 		vo.setName("kotest");
 		dto = service.getPostList(vo,0);
 		System.out.println(dto);
 	}
 	@Test
-	public void postContentsGetByName()
+	public void postContentsGetByNum()
 	{
-		PostVo post;
+		PostDTO post;
 		PostContentsDTO dto; 
-		post = new PostVo();
-		post.setPost_name("test1");
+		post = new PostDTO();
+		post.setPost_num(1);
 		dto = service.getPostContents(post);
 		System.out.println(dto);
 	}
 	@Test
-	public void postContentsGetByNum()
+	public void postInsert()
 	{
-		PostVo post;
-		PostContentsDTO dto; 
-		post = new PostVo();
-		post.setPost_num(1);
-		dto = service.getPostContents(post);
-		System.out.println(dto);
+		PostDTO dto = new PostDTO();
+		for(int i = 0 ; i <10;i++) {
+			dto.setId_num(1);
+			dto.setMenu_num(1);
+			dto.setPost_contents("TestFileInsertData"+ i);
+			dto.setPost_name("Test"+i);
+			service.insertPostContents(dto);
+		}
 	}
 }

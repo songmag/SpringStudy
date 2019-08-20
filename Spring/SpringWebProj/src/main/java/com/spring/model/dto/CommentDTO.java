@@ -1,10 +1,8 @@
-package com.spring.model.vo;
+package com.spring.model.dto;
 
 import java.sql.Date;
 
-import com.spring.model.dto.CommentDTO;
-
-public class CommentVo {
+public class CommentDTO {
 	private int comment_num=0;
 	private int post_num=0;
 	private int id_num=0;
@@ -41,15 +39,4 @@ public class CommentVo {
 	public void setContext(String context) {
 		this.context = context;
 	}
-
-
-	public void setCommentDTO(CommentDTO dto)
-	{
-		this.comment_date = dto.getComment_date();
-		this.comment_num = dto.getComment_num();
-		this.context = dto.getContext();
-		this.id_num = dto.getId_num();
-		this.post_num = dto.getPost_num();
-	}
-
 }
