@@ -72,4 +72,10 @@ public class UserVo {
 	{
 		this.id_num = id_num;
 	}
+	@Override
+	public String toString() {
+		return "UserVo [id_num=" + id_num + ", name=" + name + ", id=" + id + ", pw=" + pw + ", phone_number="
+				+ phone_number + ", address=" + address + ", date=" + date + ", self_instruction=" + self_instruction
+				+ "]";
+	}
 }

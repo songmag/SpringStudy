@@ -19,10 +19,10 @@
 <insert id="addUser" parameterType="com.spring.model.vo.UserVo" >
 	insert into user_information(id,pw,name
 	<if test= "address != null">
-		,address
+		,address,
 	</if>
 	<if test="phone_number != null">
-		,phone_number
+		,phone_number,
 	</if>
 	<if test="self_instruction != null">
 		,self_instruction
@@ -30,10 +30,10 @@
 	)
 	values(#{id},#{pw},#{name}
 	<if test= "address != null">
-		,#{address}
+		,#{address},
 	</if>
 	<if test="phone_number != null">
-		,#{phone_number}
+		,{phone_number},
 	</if>
 	<if test="self_instruction != null">
 		,#{self_instruction}

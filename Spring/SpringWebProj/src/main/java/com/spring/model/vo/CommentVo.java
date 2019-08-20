@@ -39,5 +39,4 @@ public class CommentVo {
 	public void setContext(String context) {
 		this.context = context;
 	}
-	
 }

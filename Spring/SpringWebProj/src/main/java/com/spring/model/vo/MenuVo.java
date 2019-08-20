@@ -22,4 +22,8 @@ public class MenuVo {
 	public void setMenu_count(int menu_count) {
 		this.menu_count = menu_count;
 	}
+	@Override
+	public String toString() {
+		return "MenuVo [menu_name=" + menu_name + ", menu_num=" + menu_num + ", menu_count=" + menu_count + "]";
+	}
 }
