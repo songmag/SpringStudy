@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.spring.model.dao.CommentDAO;
 import com.spring.model.dao.MenuDAO;
 import com.spring.model.dao.PostDAO;
+import com.spring.model.dao.UserDAO;
 import com.spring.model.dto.CommentDTO;
 import com.spring.model.dto.MenuDTO;
 import com.spring.model.dto.PostContentsDTO;
@@ -30,9 +31,9 @@ import com.spring.model.vo.UserVo;
 public class PostService {
 	@Autowired SqlSession sql;
 	@Autowired PostDAO p_dao;
+	@Autowired UserDAO u_dao;
 	@Autowired MenuDAO m_dao;
 	@Autowired CommentDAO c_dao;
-	private List<CommentVo> c_list;
 	////////Private Part/////////////////////////////////////////////////////////
 	private List<CommentDTO> transCommentListVoToListDTO(List<CommentVo> c_list)
 	{
@@ -54,6 +55,7 @@ public class PostService {
 		dto.setPost_name(vo.getPost_name());
 		dto.setPost_num(vo.getPost_num());
 		dto.setThumbnail(vo.getThumbnail());
+		dto.setId(vo.getId());
 		return dto;
 	}
 	private CommentDTO transVoToDTO(CommentVo vo)
@@ -74,6 +76,7 @@ public class PostService {
 		PostListDTO list = new PostListDTO();
 		MenuVo menu = new MenuVo();
 		menu.setMenuDTO(menu_dto);
+		menu = m_dao.getMenu(sql, menu);
 		list.setMenu(menu);
 		list.setPost_list(transPostListVoToListDTO(p_dao.getPostList(sql, menu, page)));
 		return list;
@@ -81,10 +84,14 @@ public class PostService {
 	private List<PostDTO> transPostListVoToListDTO(List<PostVo> p_list)
 	{
 		List<PostDTO> dtos = new LinkedList<PostDTO>();
+		UserVo temp = new UserVo();
 		for(PostVo vo : p_list)
 		{
+			temp.setId_num(vo.getId_num());
+			vo.setId(u_dao.getOnce(sql, temp).getId());
 			dtos.add(transVoToDTO(vo));
 		}
+		temp = null;
 		return dtos;
 	}
 	public PostListDTO getPostList(UserDTO user_dto,int page)

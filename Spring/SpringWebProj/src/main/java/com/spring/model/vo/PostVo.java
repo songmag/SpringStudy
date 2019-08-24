@@ -1,5 +1,6 @@
 package com.spring.model.vo;
 
+import java.lang.reflect.Field;
 import java.sql.Date;
 
 import com.spring.model.dto.PostDTO;
@@ -12,6 +13,7 @@ public class PostVo {
 	private String post_name=null;
 	private String thumbnail=null;
 	private String post_contents=null;
+	private String id=null;
 	public int getPost_num() {
 		return post_num;
 	}
@@ -40,27 +42,55 @@ public class PostVo {
 		return post_name;
 	}
 	public void setPost_name(String post_name) {
+		if(post_name.isEmpty())
+		{
+			this.post_name = null;
+			return;
+		}
 		this.post_name = post_name;
 	}
 	public String getThumbnail() {
 		return thumbnail;
 	}
 	public void setThumbnail(String thumbnail) {
+		if(thumbnail.isEmpty())
+		{
+			this.thumbnail = null;
+			return;
+		}
 		this.thumbnail = thumbnail;
-	}
+	}	
 	public String getPost_contents() {
 		return post_contents;
 	}
 	public void setPost_contents(String post_contents) {
+		if(post_contents.isEmpty())
+		{
+			this.post_contents = null;
+			return;
+		}
 		this.post_contents = post_contents;
 	}
 	public void setPostDTO(PostDTO dto)
-	{
-		this.id_num = dto.getId_num();
-		this.menu_num = dto.getMenu_num();
-		this.post_contents = dto.getPost_contents();
-		this.post_date = dto.getPost_date();
-		this.post_name = dto.getPost_name();
-		this.post_num = dto.getPost_num();
+	{		
+		this.setId_num(dto.getId_num());
+		this.setId(dto.getId());
+		this.setMenu_num(dto.getMenu_num());
+		this.setPost_contents(dto.getPost_contents());
+		this.setPost_num(dto.getPost_num());
+		this.setPost_date(dto.getPost_date());
+		this.setPost_name(dto.getPost_name());
+		this.setThumbnail(dto.getThumbnail());
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		if(id.isEmpty())
+		{
+			this.id=null;
+			return;
+		}
+		this.id = id;
 	}
 }

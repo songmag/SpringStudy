@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.error.ErrorCheckerFactory;
 import com.spring.model.dao.UserDAO;
 import com.spring.model.dto.UserDTO;
 import com.spring.model.vo.UserVo;
@@ -48,8 +49,7 @@ public class UserService {
 		dto.setSelf_instruction(user.getSelf_instruction());
 		return dto;
 	}
-	///////////////Private Part /////////////////////////
-	
+	///////////////Public Part /////////////////////////
 	public UserDTO login(UserDTO user,String pw)
 	{
 		UserVo vo;
@@ -62,7 +62,10 @@ public class UserService {
 	{
 		UserVo vo;
 		vo = transDtoToVo(user,pw);
+		if(vo.getPw() == null) return null;
+		if(vo.getName() == null) return null;
 		if(!dao.id_check(sql, vo)) return null; //존재하면 리턴
+		
 		dao.addUser(sql, vo);
 		vo = dao.getOnce(sql,vo);
 		return transVoToDTO(vo, user);
@@ -77,6 +80,7 @@ public class UserService {
 	public UserDTO updateUser(UserDTO user,String pw)
 	{
 		UserVo vo;
+		System.out.println(user);
 		vo = transDtoToVo(user,pw);
 		if(!dao.login_check(sql,vo)) return null;//존재하지 않으면 리턴 , pw 틀려도 리턴
 		dao.updateUser(sql, vo);
@@ -84,3 +88,4 @@ public class UserService {
 		return transVoToDTO(vo, user);
 	}
 }
+

@@ -1,0 +1,64 @@
+::placeholder{
+    color:rgb(255,255,255,0.5);
+}
+.container .items{
+    position: absolute;
+    z-index: 2;
+    width : 100%;
+    height : 100%;
+}
+.items .form{
+    width: 100%;
+    height : 100%;
+    margin:0;
+    padding : 0;
+}
+.items .form input, .items .form textarea ,.items .form #thumbnail_label
+{
+    position:relative;
+    width: 100%;
+    background : transparent;
+	border : none;
+	outline :none;
+    border-bottom : 2px solid #fff;
+	font-size : 18px;
+	color: #fff;
+	padding : 5px 0;
+	font-family : consolas;
+}
+.items .form .contents{
+    margin-top : 10px;
+    margin-bottom : 10px;
+    height : 70%;
+}
+.items .form input[type="file"]
+{
+    display: inline-block;
+    width: 65%;
+    height: 100%;
+    font-size : 14px;
+    cursor: pointer;
+    margin-left : 10px;
+}
+.items .from input[type="submit"]
+{
+    width: 50%;
+    cursor: pointer;
+}
+.items .inputBox #thumbnail_label{
+    text-align: center;
+    display:inline-block;
+    height:100%;
+    width:30%;
+}
+.items .form .half{
+    display: inline-block;
+    width : 45%;
+}
+.items .form .contents textarea{
+    height : 100%;
+}
+.container{
+    min-width: 500px;
+    min-height : 700px;
+}

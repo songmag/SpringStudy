@@ -65,7 +65,7 @@ public class UserDAO{
 	 */
 	public void updateUser(SqlSession sql,UserVo vo)
 	{
-			sql.update("user-mapper.updateUserById",vo);
+		sql.update("user-mapper.updateUserById",vo);
 	}
 	/**
 	 * 
@@ -74,6 +74,10 @@ public class UserDAO{
 	 * @return USERVO
 	 */
 	public UserVo getOnce(SqlSession sql,UserVo vo) {
+		if(vo.getId_num() != 0)
+		{
+			return sql.selectOne("user-mapper.getUserByIdNum",vo);
+		}
 		return sql.selectOne("user-mapper.getUserById", vo);
 	}
 }

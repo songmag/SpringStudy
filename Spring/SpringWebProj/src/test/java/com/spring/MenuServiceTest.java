@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.spring.error.ErrorCheckerFactory;
+import com.spring.error.ErrorCheckerFactoryImpl;
 import com.spring.model.dto.MenuDTO;
 import com.spring.model.dto.UserDTO;
 import com.spring.model.service.MenuService;
@@ -25,11 +27,16 @@ import com.spring.model.vo.UserVo;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebContainerApplication.class)
 public class MenuServiceTest {
-	@Autowired MenuService service;
-	
+	@Autowired ErrorCheckerFactoryImpl errorCheckerFactoryImpl;
 	@Test
 	public void startTest()
 	{
+		UserDTO userdto;
+		userdto = new UserDTO();
+		userdto.setId("1234");
+		String pw = "1234";
+		userdto.setName("25243");
+		errorCheckerFactoryImpl.errorEmptyChecker(new Object[] {userdto,pw},new Class[] {UserDTO.class,String.class},new String[] {"name","id","pw"});
 	}
 	
 	//Test Scenario

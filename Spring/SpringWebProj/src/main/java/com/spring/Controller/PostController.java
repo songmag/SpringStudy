@@ -1,37 +1,46 @@
 package com.spring.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.model.service.PostService;
-import com.spring.model.vo.MenuVo;
-import com.spring.model.vo.PostVo;
+import com.spring.model.dto.PostContentsDTO;
 
 @Controller
-@RequestMapping(value="/post")
+@RequestMapping("/post")
 public class PostController {
-	@Autowired PostService post_service;
-	@RequestMapping(value="/list")
-	public ModelAndView getList(@ModelAttribute("menu_num") MenuVo menu)
+	
+	@GetMapping("/insert")
+	public ModelAndView postinsert()
 	{
-		System.out.println(menu);
 		ModelAndView view = new ModelAndView();
-		view.setViewName("postList");
-		view.addObject("list",post_service.getPostList(menu,0));
+		view.setViewName("postInsert");
 		return view;
 	}
-	@GetMapping(value="/contents/{post_num}")
-	public ModelAndView getContents(@PathVariable("post_num") int post_num) {
-		PostVo vo = new PostVo();
-		vo.setPost_num(post_num);
+	@PostMapping("/insert")
+	public ModelAndView postinsert(@ModelAttribute PostContentsDTO dto)
+	{
+		return null;
+	}
+
+	@GetMapping(value ="/post/testCheck")
+	public ModelAndView getTest()
+	{
 		ModelAndView view = new ModelAndView();
-		view.setViewName("postContents");
-		view.addObject("post",post_service.getPostContents(vo));
+		view.setViewName("postInsert");	
+		view.addObject("errorCode","Test");
 		return view;
 	}
 }

@@ -1,3 +1,4 @@
+
 package com.spring.model.dto;
 
 import java.sql.Date;
@@ -5,11 +6,12 @@ import java.sql.Date;
 public class PostDTO {
 	private int post_num = 0;
 	private int id_num = 0;
-	private int menu_num = 0 ;
+	private int menu_num = 0;
 	private Date post_date=null;
 	private String post_name=null;
 	private String thumbnail=null;
 	private String post_contents=null;
+	private String id=null;
 	public int getPost_num() {
 		return post_num;
 	}
@@ -51,5 +53,11 @@ public class PostDTO {
 	}
 	public void setPost_contents(String post_contents) {
 		this.post_contents = post_contents;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 }

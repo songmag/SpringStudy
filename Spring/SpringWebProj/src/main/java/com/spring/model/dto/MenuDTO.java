@@ -20,10 +20,16 @@ public class MenuDTO {
 		return menu_count;
 	}
 	public void setMenu_count(int menu_count) {
-		this.menu_count = menu_count-1;
+		if(menu_count == 1)
+		{
+			this.menu_count = 0;
+			return;
+		}
+		this.menu_count = menu_count;
+		return;
 	}
 	@Override
 	public String toString() {
-		return "MenuDTO [menu_name=" + menu_name + ", menu_num=" + menu_num + ", menu_count=" + menu_count + "]";
+		return "MenuDTO [menu_name=" + menu_name+ menu_count + ", menu_num=" + menu_num + ", menu_count=" + menu_count + "]";
 	}
 }

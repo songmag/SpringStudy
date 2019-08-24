@@ -26,6 +26,7 @@ public class PostListDTO {
 		rs.append("PostListDTO [menu=");
 		try {
 		rs.append(menu.getMenu_name());
+		rs.append(menu.getMenu_count());
 		}catch(NullPointerException e)
 		{
 			System.out.println("menu_null");

@@ -9,6 +9,7 @@ import com.spring.model.vo.PostVo;
 public class PostContentsDTO {
 	private PostDTO data;
 	private List<CommentDTO> comment_list;
+	
 	public PostContentsDTO() {
 		comment_list = new LinkedList<CommentDTO>();
 	}

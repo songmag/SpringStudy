@@ -10,6 +10,11 @@ public class MenuVo {
 		return menu_name;
 	}
 	public void setMenu_name(String menu_name) {
+		if(menu_name.isEmpty())
+		{
+			this.menu_name = null;
+			return;
+		}
 		this.menu_name = menu_name;
 	}
 	public int getMenu_num() {
@@ -28,12 +33,12 @@ public class MenuVo {
 	@Override
 	public String toString() {
 		return "MenuVo [menu_name=" + menu_name + ", menu_num=" + menu_num + ", menu_count=" + menu_count + "]";
+	}
 
 	public void setMenuDTO(MenuDTO dto)
 	{
-		this.menu_count = dto.getMenu_count();
-		this.menu_name = dto.getMenu_name();
-		this.menu_num = dto.getMenu_num();
-
+		this.setMenu_count(dto.getMenu_count());
+		this.setMenu_name(dto.getMenu_name());
+		this.setMenu_num(dto.getMenu_num());
 	}
 }

@@ -39,17 +39,22 @@ public class CommentVo {
 		return context;
 	}
 	public void setContext(String context) {
+		if(context.isEmpty())
+		{
+			this.context = null;
+			return;
+		}
 		this.context = context;
 	}
 
 
 	public void setCommentDTO(CommentDTO dto)
 	{
-		this.comment_date = dto.getComment_date();
-		this.comment_num = dto.getComment_num();
-		this.context = dto.getContext();
-		this.id_num = dto.getId_num();
-		this.post_num = dto.getPost_num();
+		this.setComment_date(dto.getComment_date());
+		this.setComment_num ( dto.getComment_num());
+		this.setContext (dto.getContext());
+		this.setId_num( dto.getId_num());
+		this.setPost_num( dto.getPost_num());
 	}
 
 }

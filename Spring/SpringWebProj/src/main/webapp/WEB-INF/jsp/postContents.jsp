@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Contents Page</title>
 </head>
 <body>
 	<p><c:out value = "${post.data.post_name}"/></p>
@@ -19,4 +19,9 @@
 		</p>
 	</c:forEach>
 </body>
+<script>
+	<c:if test = "${!empty errorCode}"> 
+		alert("${errorCode}");
+	</c:if>
+</script>
 </html>

@@ -1,5 +1,6 @@
 package com.spring.model.vo;
 
+import java.lang.reflect.Field;
 import java.sql.Date;
 
 import com.spring.model.dto.UserDTO;
@@ -13,6 +14,8 @@ public class UserVo {
 	private Date date=null;
 	private String self_instruction=null;
 	public UserVo() {}
+	
+	
 	public UserVo(int id_num, String name, String id, String pw, String phone_number, String address, Date date,
 			String self_instruction) {
 		super();
@@ -29,30 +32,61 @@ public class UserVo {
 		return name;
 	}
 	public void setName(String name) {
+		if(name == null) return;
+		if(name.isEmpty())
+		{
+			this.name = null;
+			return;
+		}
 		this.name = name;
+		return;
 	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
+		if(id==null) return;
+		if(id.isEmpty())
+		{
+			this.id = null;
+			return;
+		}
 		this.id = id;
 	}
 	public String getPw() {
 		return pw;
 	}
 	public void setPw(String pw) {
+		if(pw == null) return;
+		if(pw.isEmpty())
+		{
+			this.pw = null;
+			return;
+		}
 		this.pw = pw;
 	}
 	public String getPhone_number() {
 		return phone_number;
 	}
 	public void setPhone_number(String phone_number) {
+		if(phone_number == null) return;
+		if(phone_number.isEmpty())
+		{
+			this.phone_number=null;
+			return;
+		}
 		this.phone_number = phone_number;
 	}
 	public String getAddress() {
 		return address;
 	}
 	public void setAddress(String address) {
+		if(address == null) return;
+		if(address.isEmpty())
+		{
+			this.address = null;
+			return;
+		}
 		this.address = address;
 	}
 	public Date getDate() {
@@ -65,6 +99,12 @@ public class UserVo {
 		return self_instruction;
 	}
 	public void setSelf_instruction(String self_instruction) {
+		if(self_instruction==null) return; 
+		if(self_instruction.isEmpty())
+		{
+			this.self_instruction = null;
+			return;
+		}
 		this.self_instruction = self_instruction;
 	}
 	public int getId_num() {
@@ -79,13 +119,14 @@ public class UserVo {
 		return "UserVo [id_num=" + id_num + ", name=" + name + ", id=" + id + ", pw=" + pw + ", phone_number="
 				+ phone_number + ", address=" + address + ", date=" + date + ", self_instruction=" + self_instruction
 				+ "]";
+	}
 	public void setUserDTO(UserDTO dto)
 	{
-		this.id = dto.getId();
-		this.address = dto.getAddress();
-		this.id_num = dto.getId_num();
-		this.name = dto.getName();
-		this.phone_number = dto.getPhone_number();
-		this.self_instruction = dto.getSelf_instruction();
+		this.setId(dto.getId());
+		this.setAddress(dto.getAddress());
+		this.setId_num(dto.getId_num());
+		this.setName(dto.getName());
+		this.setPhone_number(dto.getPhone_number());
+		this.setSelf_instruction(dto.getSelf_instruction());
 	}
 }
