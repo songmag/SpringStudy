@@ -16,7 +16,7 @@ import com.spring.model.dto.MenuDTO;
 import com.spring.model.dto.PostContentsDTO;
 import com.spring.model.dto.PostDTO;
 import com.spring.model.dto.PostListDTO;
-import com.spring.model.dto.UserDTO;
+import com.spring.model.dto.user.UserDTO;
 import com.spring.model.vo.CommentVo;
 import com.spring.model.vo.MenuVo;
 import com.spring.model.vo.PostVo;

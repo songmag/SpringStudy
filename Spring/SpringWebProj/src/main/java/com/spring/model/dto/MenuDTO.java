@@ -20,11 +20,6 @@ public class MenuDTO {
 		return menu_count;
 	}
 	public void setMenu_count(int menu_count) {
-		if(menu_count == 1)
-		{
-			this.menu_count = 0;
-			return;
-		}
 		this.menu_count = menu_count;
 		return;
 	}

@@ -3,7 +3,7 @@ package com.spring.model.vo;
 import java.lang.reflect.Field;
 import java.sql.Date;
 
-import com.spring.model.dto.UserDTO;
+import com.spring.model.dto.user.UserDTO;
 public class UserVo {
 	private int id_num=0;
 	private String name=null;

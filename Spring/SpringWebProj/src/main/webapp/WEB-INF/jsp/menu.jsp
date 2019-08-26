@@ -16,7 +16,7 @@
 			<h2>MenuList</h2>
 			<c:forEach var="menu" items="${menu_list}">
 				<div class="item">
-					<a href="/list/post/${menu.menu_num}"><span><c:out value="${menu.menu_name}"/></span>
+					<a href="/list/post/${menu.menu_num}/0"><span><c:out value="${menu.menu_name}"/></span>
 					<span><c:out value="${menu.menu_count}"/></span></a>
 				</div>
 			</c:forEach>

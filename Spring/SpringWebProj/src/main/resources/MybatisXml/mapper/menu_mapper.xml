@@ -6,23 +6,24 @@
 	<resultMap type="com.spring.model.vo.MenuVo" id="menuVo">
 		<result column="MENU_NUM" property="menu_num"/>
 		<result column="MENU_NAME" property="menu_name"/>
-		<result column="COUNT(*)" property="menu_count"/>
+		<result column="COUNT" property="menu_count"/>
+		<result column="EMPTY" property="menu_empty"/>
 	</resultMap>
 	<select id="getMenuAll" resultMap="menuVo">
-		SELECT MENU.MENU_NUM,MENU.MENU_NAME,COUNT(*) FROM MENU
-		LEFT JOIN POST
+		SELECT MENU.MENU_NUM,MENU.MENU_NAME,IF(ISNULL(POST.MENU_NUM),0,COUNT(*)) AS COUNT FROM MENU
+		LEFT JOIN POST 
 		ON MENU.MENU_NUM = POST.MENU_NUM
-		GROUP BY MENU.MENU_NAME
+		GROUP BY MENU.MENU_NUM
 	</select>
 	<select id="getMenuByNum" parameterType="Integer" resultMap="menuVo">
-		SELECT MENU.MENU_NUM,MENU.MENU_NAME,COUNT(*) FROM MENU
+		SELECT MENU.MENU_NUM,MENU.MENU_NAME,IF(ISNULL(POST.MENU_NUM),0,COUNT(*)) AS COUNT  FROM MENU
 		LEFT JOIN POST
 		ON MENU.MENU_NUM = POST.MENU_NUM
 		GROUP BY MENU.MENU_NAME
 		HAVING MENU.MENU_NUM = #{menu_num}
 	</select> 
 	<select id="getMenuByName" parameterType="String" resultMap="menuVo">
-		SELECT MENU.MENU_NUM,MENU.MENU_NAME,COUNT(*) FROM MENU
+		SELECT MENU.MENU_NUM,MENU.MENU_NAME,IF(ISNULL(POST.MENU_NUM),0,COUNT(*)) AS COUNT FROM MENU
 		LEFT JOIN POST
 		ON MENU.MENU_NUM = POST.MENU_NUM
 		GROUP BY MENU.MENU_NAME

@@ -38,6 +38,7 @@ public class MenuVo {
 	public void setMenuDTO(MenuDTO dto)
 	{
 		this.setMenu_count(dto.getMenu_count());
+		if(dto.getMenu_name() != null)
 		this.setMenu_name(dto.getMenu_name());
 		this.setMenu_num(dto.getMenu_num());
 	}

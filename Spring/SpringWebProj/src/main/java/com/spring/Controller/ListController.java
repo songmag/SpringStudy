@@ -1,7 +1,6 @@
 package com.spring.Controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,22 +23,25 @@ public class ListController {
 	public ModelAndView getList(HttpServletRequest req)
 	{
 		ModelAndView view = new ModelAndView();
+		if(req.getAttribute("user") == null)
+		{
+			view.setViewName("redirect:/login");
+		}
 		view.setViewName("menu");
 		view.addObject("menu_list",menu_service.getMenu());
-		System.out.println(req.getAttribute("errorCode"));
 		view.addObject("errorCode",req.getAttribute("errorCode"));
 		return view;
 	}
-	@GetMapping(value="/post/{menu_num}")
-	public ModelAndView getList(@PathVariable("menu_num") int menu_num)
+	@GetMapping(value="/post/{menu_num}/{page}")
+	public ModelAndView getList(@PathVariable("menu_num") int menu_num,@PathVariable("page") int page_num)
 	{
 		MenuDTO menu = new MenuDTO();
 		menu.setMenu_num(menu_num);
 		ModelAndView view = new ModelAndView();
 		view.setViewName("postList");
-		PostListDTO dto = post_service.getPostList(menu, 0);
+		PostListDTO dto = post_service.getPostList(menu, page_num);
 		System.out.println(dto);
-		view.addObject("list",post_service.getPostList(menu, 0));
+		view.addObject("list",dto);
 		return view;
 	}
 }

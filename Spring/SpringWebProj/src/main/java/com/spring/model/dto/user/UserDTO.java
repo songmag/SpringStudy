@@ -1,11 +1,10 @@
-package com.spring.model.dto;
+package com.spring.model.dto.user;
 
 import javax.validation.constraints.NotBlank;
 
 public class UserDTO {
 	private int id_num;
-	private String name;
-	
+	private String name;	
 	private String id;
 	private String phone_number;
 	private String address;

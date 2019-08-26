@@ -4,9 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.error.ErrorCheckerFactory;
 import com.spring.model.dao.UserDAO;
-import com.spring.model.dto.UserDTO;
+import com.spring.model.dto.user.UserDTO;
 import com.spring.model.vo.UserVo;
 
 /**

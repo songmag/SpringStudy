@@ -74,12 +74,17 @@ public class PostVo {
 	public void setPostDTO(PostDTO dto)
 	{		
 		this.setId_num(dto.getId_num());
+		if(dto.getId() != null)
 		this.setId(dto.getId());
 		this.setMenu_num(dto.getMenu_num());
+		if(dto.getPost_contents() != null)
 		this.setPost_contents(dto.getPost_contents());
+		
 		this.setPost_num(dto.getPost_num());
 		this.setPost_date(dto.getPost_date());
+		if(dto.getPost_name() != null)
 		this.setPost_name(dto.getPost_name());
+		if(dto.getThumbnail() != null)
 		this.setThumbnail(dto.getThumbnail());
 	}
 	public String getId() {

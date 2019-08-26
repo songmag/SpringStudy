@@ -1,25 +1,30 @@
 package com.spring.Controller;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.error.ErrorCheckerFactory;
-import com.spring.model.dto.UserDTO;
+import com.spring.Error.ErrorClass;
+import com.spring.model.dto.user.LoginDTO;
+import com.spring.model.dto.user.SignInDTO;
+import com.spring.model.dto.user.UserDTO;
 import com.spring.model.service.UserService;
 
 @Controller
 public class LoginController {
 	@Autowired UserService user_service;
-	@Autowired ErrorCheckerFactory error;
 	/**
 	 * 
 	 * @return root page => login
@@ -52,17 +57,17 @@ public class LoginController {
 	 * forward:/login or redirect:/list/menu
 	 */
 	@PostMapping("/login/checking")
-	public String login_post(@ModelAttribute UserDTO dto,@ModelAttribute("pw") String pw,HttpServletRequest req)
+	public String login_post(@Valid @ModelAttribute LoginDTO dto,BindingResult result,HttpServletRequest req)
 	{
-		//Form Error Checking ServerSide
-		String errorCode = (String) error.errorChecker(new Object[]{dto,pw},new Class[]{ UserDTO.class,String.class},"logInCheck");
-		if(errorCode != null) {
-			req.setAttribute("errorCode",errorCode);
+		if(result.hasErrors())
+		{
+			req.setAttribute("errorCode", ErrorClass.errorCodeMake(result));
 			return "forward:/login";
 		}
 		//Service Error Checking
-		UserDTO user;
-		user = user_service.login(dto, pw);
+		UserDTO user = new UserDTO();
+		user.setId(dto.getId());
+		user = user_service.login(user,dto.getPw());
 		if(user == null)
 		{
 			req.setAttribute("errorCode","Login 정보가 없습니다.");
@@ -77,29 +82,30 @@ public class LoginController {
 		return "signin";
 	}
 	@PostMapping("/signin/checking")
-	public String signin(@ModelAttribute UserDTO dto,@ModelAttribute("pw") String pw, HttpServletRequest req)
+	public String signin(@Valid @ModelAttribute SignInDTO dto,BindingResult error, HttpServletRequest req)
 	{
 		if(req.getSession().getAttribute("user") != null)
 		{
 			return "redirect:/list/menu";
 		}
-		LinkedList<String> errorCode;
-		errorCode = error.errorEmptyChecker(new Object[]{dto}, new Class[]{ UserDTO.class},"id","name");
-		if(pw.isEmpty())
+		if(error.hasErrors())
 		{
-			errorCode.add("ErrorCode : password is Empty");
-		}
-		if(errorCode != null)
-		{
-			req.setAttribute("errorCode",errorCode);
+			req.setAttribute("errorCode", ErrorClass.errorCodeMake(error));
 			return "forward:/signin";
 		}
-		UserDTO user;
-		user=user_service.addUser(dto, pw);
 		
+		UserDTO user;
+		user = new UserDTO();
+		user.setId(dto.getId());
+		user.setAddress(dto.getAddress());
+		user.setName(dto.getName());
+		user.setPhone_number(dto.getPhone_number());
+		user.setSelf_instruction(dto.getSelf_instruction());
+		user=user_service.addUser(user,dto.getPw());
 		if(user == null)
 		{
-			return "redirect:/login";
+			req.setAttribute("errorCode","Id가 존재합니다.");
+			return "forward:/signin";
 		}
 		req.getSession().setAttribute("user",user);
 		return "forward:/list/menu";
