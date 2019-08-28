@@ -1,0 +1,66 @@
+.container{
+    min-height:800px;
+}
+.items{
+    position:absolute;
+    z-index:2;
+    width: 100%;
+    top : 40px;
+}
+.items .item{
+    margin-top : 20px;
+    min-width : 15px;
+    color : #fff;
+    font-size : 15px;
+}
+.items .item a{
+    display:block;
+    text-decoration: none;
+    font-size : 10px;
+    cursor:pointer;
+    transition: height 2s;
+    color : #fff;
+    width:100%;
+}
+.items .item span{
+	margin-left :15px;
+	display:inline-block;
+    min-width: 20%;
+}
+.items .item .name{
+	width: 20%;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.items .item a:hover{
+    min-height : 15px;
+    font-size : 13px;
+    color : red;
+}
+.items .counting{
+    text-align: center;
+    margin-top : 20px;
+}
+.items .counting span{
+    color:#fff;
+    margin-left:10px;
+}
+
+.button{
+    text-align: right;
+}
+.button a{
+    position: absolute;
+    display: block;
+    text-decoration: none;
+    cursor:pointer;
+    color :#fff;
+    font-family: consolas;
+    font-size: 18px;
+    border : 1px dotted red;
+    right :15px;
+}
+.button a:hover{
+    border : 2px dotted blue;
+}

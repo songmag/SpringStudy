@@ -31,7 +31,7 @@ public class PostInsertDTO {
 		return post_contents;
 	}
 	public void setPost_contents(String post_contents) {
-		this.post_contents = post_contents;
+		this.post_contents = post_contents.replaceAll("\r\n", "<br>");	
 	}
 	public String getMenu_num() {
 		return menu_num;

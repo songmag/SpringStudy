@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>PostList ${list.menu.menu_name} </title>
-<link rel="stylesheet" href="/css/contents.css" type="text/css">
+<link rel="stylesheet" href="/css/contentsList.css" type="text/css">
 <link rel="stylesheet" href="/css/mainLayout.css" type="text/css">
 </head>
 <body>
@@ -42,7 +42,7 @@
             			</c:forEach>
             		</c:when>
             		<c:when test="${list.menu.menu_count < 10 && list.menu.menu_count != 1}">
-            			<c:forEach begin="1" end="${list.menu.menu_count-1}" step="1" varStatus="status">
+            			<c:forEach begin="1" end="${list.menu.menu_count}" step="1" varStatus="status">
             				<span>${status.count}</span>
             			</c:forEach>
             		</c:when>

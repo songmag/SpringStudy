@@ -12,7 +12,7 @@
     <div class="container">
         <div class="form">
         <h2>WelCome To Programming Page</h2>
-        <form action="/changeInfo" method="post" autocomplete="off">
+        <form action="/changeInfo/checking" method="post" autocomplete="off">
             <div class="inputBox">
             <input type="text" name="id" id="id" placeholder="ID" disabled value="${user.id}">
             </div>

@@ -10,7 +10,14 @@ public class CommentVo {
 	private int id_num=0;
 	private Date comment_date=null;
 	private String context=null;
+	private String user_id=null;
 	
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public int getComment_num() {
 		return comment_num;
 	}
@@ -39,7 +46,7 @@ public class CommentVo {
 		return context;
 	}
 	public void setContext(String context) {
-		if(context.isEmpty())
+		if( context==null || context.isEmpty())
 		{
 			this.context = null;
 			return;

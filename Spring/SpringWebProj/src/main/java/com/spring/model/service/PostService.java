@@ -38,8 +38,12 @@ public class PostService {
 	private List<CommentDTO> transCommentListVoToListDTO(List<CommentVo> c_list)
 	{
 		List<CommentDTO> dtos = new LinkedList<CommentDTO>();
+		UserVo temp = new UserVo();
 		for(CommentVo vo : c_list)
 		{
+			temp.setId_num(vo.getId_num());
+			temp = u_dao.getOnce(sql, temp);
+			vo.setUser_id(temp.getId());
 			dtos.add(transVoToDTO(vo));
 		}
 		return dtos;
@@ -66,10 +70,10 @@ public class PostService {
 		dto.setContext(vo.getContext());
 		dto.setId_num(vo.getId_num());
 		dto.setPost_num(vo.getPost_num());
+		dto.setUser_id(vo.getUser_id());
 		return dto;
 	}
 	////////////////////////////////////////////////////////////////////////////////
-	
 	
 	public PostListDTO getPostList(MenuDTO menu_dto,int page)
 	{

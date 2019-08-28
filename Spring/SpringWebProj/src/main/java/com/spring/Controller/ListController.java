@@ -32,7 +32,7 @@ public class ListController {
 		view.addObject("errorCode",req.getAttribute("errorCode"));
 		return view;
 	}
-	@GetMapping(value="/post/{menu_num}/{page}")
+	@RequestMapping(value="/post/{menu_num}/{page}")
 	public ModelAndView getList(@PathVariable("menu_num") int menu_num,@PathVariable("page") int page_num)
 	{
 		MenuDTO menu = new MenuDTO();

@@ -15,7 +15,7 @@
 	</select>
 	<insert id="insertComment" parameterType="com.spring.model.vo.CommentVo">
 		INSERT INTO COMMENT(POST_NUM,ID_NUM,CONTEXT)
-		VALUES(#{post_num},#{id_num},#{context});
+		VALUES(#{post_num},#{id_num},#{context})
 	</insert>
 	<delete id="deleteComment" parameterType="Integer">
 		DELETE FROM COMMENT
