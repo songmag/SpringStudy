@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="menu-mapper">
+	<resultMap type="com.spring.model.vo.MenuVo" id="menuVo">
+		<result column="MENU_NUM" property="menu_num"/>
+		<result column="MENU_NAME" property="menu_name"/>
+		<result column="COUNT(*)" property="menu_count"/>
+	</resultMap>
+	<select id="getMenuAll" resultMap="menuVo">
+		SELECT MENU.MENU_NUM,MENU.MENU_NAME,COUNT(*) FROM MENU
+		LEFT JOIN POST
+		ON MENU.MENU_NUM = POST.MENU_NUM
+		GROUP BY MENU.MENU_NAME
+	</select>
+	<select id="getMenuByNum" parameterType="Integer" resultMap="menuVo">
+		SELECT MENU.MENU_NUM,MENU.MENU_NAME,COUNT(*) FROM MENU
+		LEFT JOIN POST
+		ON MENU.MENU_NUM = POST.MENU_NUM
+		GROUP BY MENU.MENU_NAME
+		HAVING MENU.MENU_NUM = #{menu_num}
+	</select> 
+	<select id="getMenuByName" parameterType="String" resultMap="menuVo">
+		SELECT MENU.MENU_NUM,MENU.MENU_NAME,COUNT(*) FROM MENU
+		LEFT JOIN POST
+		ON MENU.MENU_NUM = POST.MENU_NUM
+		GROUP BY MENU.MENU_NAME
+		HAVING MENU.MENU_NAME = #{menu_name}
+	</select> 
+	<select id="checkMenu" parameterType="String" resultType="String">
+		SELECT MENU_NAME FROM MENU
+		WHERE MENU_NAME = #{menu_name}
+	</select>
+	<insert id="insertMenu" parameterType="com.spring.model.vo.MenuVo">
+		INSERT INTO MENU(MENU_NAME)
+		VALUES #{menu_name}
+	</insert>
+	<delete id="deleteMenuByNum" parameterType="Integer">
+		DELETE FROM MENU
+		WHERE MENU_NUM = #{menu_num}
+	</delete>
+	<delete id="deleteMenuByName" parameterType="String">
+		DELETE FROM MENU
+		WHERE MENU_NAME = #{menu_name}
+	</delete>
+	<update id="updateMenu" parameterType="com.spring.model.vo.MenuVo">
+		UPDATE MENU
+		SET MENU_NAME = #{menu_name}
+		WHERE MENU_NUM = #{menu_num}
+	</update>
+</mapper>

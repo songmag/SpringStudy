@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comment-mapper">
+	<select id="getCommentListByNum" parameterType="Integer" resultType="com.spring.model.vo.CommentVo">
+		SELECT COMMENT_NUM,POST_NUM,ID_NUM,COMMENT_DATE,CONTEXT FROM COMMENT
+		WHERE POST_NUM = #{post_num}
+	</select>
+	<select id="getCommentListByName" parameterType="String" resultType="com.spring.model.vo.CommentVo">
+		SELECT C.COMMENT_NUM,C.POST_NUM,C.ID_NUM,C.COMMENT_DATE,C.CONTEXT FROM COMMENT AS C
+		INNER JOIN POST AS P
+		ON C.POST_NUM = P.POST_NUM
+		WHERE P.POST_NAME = #{post_name}
+	</select>
+	<insert id="insertComment" parameterType="com.spring.model.vo.CommentVo">
+		INSERT INTO COMMENT(POST_NUM,ID_NUM,CONTEXT)
+		VALUES(#{post_num},#{id_num},#{context})
+	</insert>
+	<delete id="deleteComment" parameterType="Integer">
+		DELETE FROM COMMENT
+		WHERE COMMENT_NUM = #{comment_num}
+	</delete>
+</mapper>
+

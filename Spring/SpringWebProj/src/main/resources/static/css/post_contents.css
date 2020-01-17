@@ -1,0 +1,50 @@
+.container{
+    min-height:800px;
+}
+.items{
+    position : absolute;
+    z-index: 2;
+    width: 100%;
+}
+.post{
+    top : 20px;
+    min-height : 500px;
+    color: #fff;
+}
+.comment{
+    top : 600px;
+    padding : 15px;
+    font-size : 11px;
+}
+.items .post-name {
+    font-size : 17px;
+    padding-left : 15px;
+}
+.items .post-contents{
+    font-size : 11px;
+    padding : 15px;
+}
+.inputBox{
+    width:420px;
+}
+.inputBox input{
+    width : 420px;
+    background : transparent;
+	border : none;
+	border-bottom : 2px solid #fff;
+	outline :none;
+	font-size : 18px;
+	color: #fff;
+	padding : 5px 0;
+	font-family : consolas;
+}
+.item {
+    margin-top :15px;
+}
+.item .comment-context{
+    color : #fff;
+}
+
+::placeholder{
+    color:rgba(255,255,255,0.3);
+}
