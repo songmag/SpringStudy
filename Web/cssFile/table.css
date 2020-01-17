@@ -1,0 +1,23 @@
+table{
+    position: relative;
+    min-width: 200px;
+    margin:0; 
+    width : 100%;
+}
+td{
+    border-style: solid;
+    border-width:1px;
+    height:20px;
+}
+.num{
+    width: 10%;
+}
+.name{
+    width: 50%;
+}
+.id{
+    width:20%;
+}
+.date{
+    width:20% ;
+}
